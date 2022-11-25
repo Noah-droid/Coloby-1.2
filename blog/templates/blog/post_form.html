@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Clob{% endblock %}
+
+<style>
+   #div_id_title{
+       width: 10px;
+    }
+</style>
+{% block content %}
+<div class="m-auto w-100 container">
+<div class="content-section">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"><b>Create Clob</b></legend>
+         
+            {{form|crispy}}
+            <script src="/static/ckeditor/ckeditor-init.js"></script>
+            {{form.media}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-info" type="submit">Post</button>
+            <a class="btn btn-danger" href="{% url 'blog-home' %}">Cancel</a>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}
